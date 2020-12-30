@@ -9,6 +9,7 @@ buildscript {
     dependencies {
         classpath gradlePlugin.android
         classpath gradlePlugin.kotlin
+        classpath gradlePlugin.hilt
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -19,6 +20,7 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url "https://jitpack.io" }
     }
 }
 

@@ -1,0 +1,28 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.21"
+
+    // Retrofit && okHttps
+    implementation deps.retrofit.retrofit
+    implementation deps.retrofit.adapter_rxjava
+    implementation deps.retrofit.converter_gson
+
+    implementation deps.okhttp3.logging
+    implementation project(path: ':data')
+
+    testImplementation deps.test.junit
+    testImplementation deps.test.core
+    testImplementation deps.test.ext_junit
+    //testImplementation deps.test.mockito_kotlin
+    //testImplementation deps.test.assertj_core
+    testImplementation deps.coroutines.test
+}
