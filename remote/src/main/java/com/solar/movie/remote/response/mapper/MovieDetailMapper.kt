@@ -4,6 +4,7 @@ import com.solar.movie.data.entity.MovieEntity
 import com.solar.movie.remote.IMAGE_BASE_HOST
 import com.solar.movie.remote.UNKNOWN
 import com.solar.movie.remote.response.movie.MovieDetailResponse
+import com.solar.movie.remote.response.movie.popular.MoviePopularItemResponse
 
 /**
  * Copyright 2020 Kenneth
@@ -24,8 +25,19 @@ import com.solar.movie.remote.response.movie.MovieDetailResponse
 class MovieDetailMapper {
     fun transformResponseToEntity(response: MovieDetailResponse): MovieEntity {
         return MovieEntity(
+            id = response.id ?: 0,
             title = response.originalTitle ?: UNKNOWN,
             desc = response.overview ?: UNKNOWN,
-            poster = IMAGE_BASE_HOST + response.posterPath)
+            poster = IMAGE_BASE_HOST + response.posterPath,
+            releaseDate = response.releaseDate ?: UNKNOWN)
+    }
+
+    fun transformPopularResponseToMovieEntity(response: MoviePopularItemResponse): MovieEntity {
+        return MovieEntity(
+            id = response.id ?: 0,
+            title = response.originalTitle ?: UNKNOWN,
+            desc = response.overview ?: UNKNOWN,
+            poster = IMAGE_BASE_HOST + response.posterPath,
+            releaseDate = response.releaseDate ?: UNKNOWN)
     }
 }

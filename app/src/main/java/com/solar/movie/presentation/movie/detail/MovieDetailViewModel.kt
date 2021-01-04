@@ -1,4 +1,4 @@
-package com.solar.movie.presentation.detail
+package com.solar.movie.presentation.movie.detail
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData

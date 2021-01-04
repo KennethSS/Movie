@@ -28,4 +28,10 @@ class MovieRepositoryImpl(
     override suspend fun getMovieById(id: Int): Movie {
         return mapper.transformEntityToModel(service.getMovieDetailById(id))
     }
+
+    override suspend fun getPopularMovie(): List<Movie> {
+        return service.getPopularMovie().map {
+            mapper.transformEntityToModel(it)
+        }
+    }
 }

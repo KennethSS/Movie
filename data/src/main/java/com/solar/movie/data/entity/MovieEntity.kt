@@ -17,7 +17,9 @@ package com.solar.movie.data.entity
  *
  **/
 data class MovieEntity(
+    val id: Int,
     val title: String,
     val desc: String,
-    val poster: String
+    val poster: String,
+    val releaseDate: String
 )

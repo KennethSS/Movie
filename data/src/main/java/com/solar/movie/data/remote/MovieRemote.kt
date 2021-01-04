@@ -20,4 +20,5 @@ import com.solar.movie.data.entity.MovieEntity
  **/
 interface MovieRemote {
     suspend fun getMovieDetailById(id: Int): MovieEntity
+    suspend fun getPopularMovie(): List<MovieEntity>
 }

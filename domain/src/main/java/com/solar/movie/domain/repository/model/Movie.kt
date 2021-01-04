@@ -17,7 +17,9 @@ package com.solar.movie.domain.repository.model
  *
  **/
 data class Movie(
+    val id: Int,
     val title: String,
     val desc: String,
-    val poster: String
+    val poster: String,
+    val releaseDate: String
 )

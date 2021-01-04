@@ -22,9 +22,11 @@ import com.solar.movie.domain.repository.model.Movie
 class MovieEntityMapper {
     fun transformEntityToModel(entity: MovieEntity): Movie {
         return Movie(
+            id = entity.id,
             title = entity.title,
             desc = entity.desc,
-            poster = entity.poster
+            poster = entity.poster,
+            releaseDate = entity.releaseDate
         )
     }
 }

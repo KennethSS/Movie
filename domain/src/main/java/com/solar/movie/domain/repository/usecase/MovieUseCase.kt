@@ -26,4 +26,8 @@ class MovieUseCase (
     suspend fun getMovieById(id: Int): Movie {
         return movieRepository.getMovieById(id)
     }
+
+    suspend fun getPopularMovie(): List<Movie> {
+        return movieRepository.getPopularMovie()
+    }
 }

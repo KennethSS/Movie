@@ -1,5 +1,7 @@
-package com.solar.movie.presentation.detail
+package com.solar.movie.presentation.movie.detail
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
@@ -33,6 +35,8 @@ class MovieDetailActivity : BindingActivity() {
 
     private val movieDetailViewModel: MovieDetailViewModel by viewModels()
 
+    private val movieId: Int by lazy { intent.getIntExtra("id", 0) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -47,6 +51,15 @@ class MovieDetailActivity : BindingActivity() {
             }
         }
 
-        movieDetailViewModel.getMovieDetail(550)
+        movieDetailViewModel.getMovieDetail(movieId)
+    }
+
+
+    companion object {
+        fun start(context: Context, id: Int) {
+            context.startActivity(Intent(context, MovieDetailActivity::class.java).apply {
+                putExtra("id", id)
+            })
+        }
     }
 }

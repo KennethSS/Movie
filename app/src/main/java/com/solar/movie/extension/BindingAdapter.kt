@@ -26,6 +26,16 @@ fun loadImage(iv: AppCompatImageView, url: String?) {
     url?.let {
         Glide.with(iv.context)
             .load(url)
+            .apply(RequestOptions.centerCropTransform())
+            .into(iv)
+    }
+}
+
+@BindingAdapter("circle")
+fun loadCircleImage(iv: AppCompatImageView, url: String?) {
+    url?.let {
+        Glide.with(iv.context)
+            .load(url)
             .apply(RequestOptions.circleCropTransform())
             .into(iv)
     }

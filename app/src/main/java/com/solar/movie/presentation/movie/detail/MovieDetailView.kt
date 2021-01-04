@@ -1,4 +1,4 @@
-package com.solar.movie.presentation.detail
+package com.solar.movie.presentation.movie.detail
 
 /**
  * Copyright 2020 Kenneth

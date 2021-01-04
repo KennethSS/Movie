@@ -26,6 +26,12 @@ class MovieRemoteImpl(
     private val mapper: MovieDetailMapper
 ) : MovieRemote {
     override suspend fun getMovieDetailById(id: Int): MovieEntity {
-        return mapper.transformResponseToEntity(service.getMovieDetailByIdFromCoroutine())
+        return mapper.transformResponseToEntity(service.getMovieDetailByIdFromCoroutine(id))
+    }
+
+    override suspend fun getPopularMovie(): List<MovieEntity> {
+        return service.getPopularMovie().results?.map {
+            mapper.transformPopularResponseToMovieEntity(it)
+        } ?: listOf()
     }
 }
