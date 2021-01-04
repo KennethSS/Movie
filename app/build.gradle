@@ -67,6 +67,9 @@ dependencies {
     implementation deps.coroutines.android
     implementation deps.coroutines.core
 
+    implementation deps.navigation.fragment_ktx
+    implementation deps.navigation.ui_ktx
+
     implementation deps.hilt.android
 
     kapt deps.hilt.compiler
@@ -80,7 +83,7 @@ dependencies {
 
     implementation 'com.github.KennethSS:SolarBinding:1.0.1'
     implementation 'com.github.KennethSS:SolarListView:1.2.0'
-
+    implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.6'
 
     testImplementation deps.test.junit
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

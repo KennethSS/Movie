@@ -18,6 +18,7 @@ versions.timber = "4.7.1"
 versions.browser = "1.2.0"
 versions.hilt = "2.29.1-alpha"
 versions.hilt_view_model = "1.0.0-alpha02"
+versions.work = "2.4.0"
 versions.koin = "2.0.1"
 versions.glide = "4.11.0"
 versions.retrofit = "2.9.0"
@@ -148,6 +149,11 @@ deps.hilt = [
         common              : "androidx.hilt:hilt-common:$versions.hilt_view_model",
         viewmodel_compiler  : "androidx.hilt:hilt-compiler:$versions.hilt_view_model",
         android_testing     : "com.google.dagger:hilt-android-testing:$versions.hilt"
+]
+
+deps.work = [
+        // Kotlin + coroutines
+        runtime_ktx: "androidx.work:work-runtime-ktx:$versions.work"
 ]
 
 // Koin
