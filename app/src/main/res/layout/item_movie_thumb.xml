@@ -13,39 +13,54 @@
             type="com.solar.movie.presentation.movie.thumb.MovieThumbView" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        android:onClick="@{ view -> vm.showMovieDetail(view.context, item.id) }">
+        android:onClick="@{ view -> vm.showMovieDetail(view, item) }">
 
-        <androidx.cardview.widget.CardView
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/thumb_poster_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:cardCornerRadius="16dp"
             app:cardElevation="6dp"
-            app:cardUseCompatPadding="true">
+            app:cardUseCompatPadding="true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
 
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/movie_thumb_poster"
                 android:layout_width="150dp"
                 android:layout_height="180dp"
                 android:scaleType="centerCrop"
+                android:transitionName="@{item.name}"
                 app:url="@{item.poster}"
                 tools:src="@tools:sample/backgrounds/scenic"/>
-
-        </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
+            android:id="@+id/movie_thumb_title"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
+            android:maxLines="2"
             android:text="@{item.name}"
+            app:layout_constraintTop_toBottomOf="@id/thumb_poster_card"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             tools:text="Wonder Woman 1984"/>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="@{item.releaseDate}"
+            app:layout_constraintTop_toBottomOf="@id/movie_thumb_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             tools:text="@tools:sample/date/mmddyy"/>
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

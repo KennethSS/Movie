@@ -24,4 +24,9 @@
         android:name="com.solar.movie.presentation.my.MyFragment"
         android:label="MyFragment" >
     </fragment>
+
+    <fragment
+        android:id="@+id/fragment_movie_detail"
+        android:name="com.solar.movie.presentation.movie.detail.MovieDetailFragment"
+        android:label="MovieDetailFragment" />
 </navigation>

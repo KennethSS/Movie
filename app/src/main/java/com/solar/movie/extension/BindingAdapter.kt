@@ -1,7 +1,9 @@
 package com.solar.movie.extension
 
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.view.doOnPreDraw
 import androidx.databinding.BindingAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 

@@ -7,7 +7,7 @@ import com.solar.recyclerview.adapter.holder.BindingHolder
 import com.solar.recyclerview.adapter.normal.DataBindingAdapter
 
 class HomeListAdapter(vm: ViewModel) : DataBindingAdapter<HomeItem>(viewModel = vm){
-    private val stateList = hashMapOf<String, Parcelable>()
+    //private val stateList = hashMapOf<String, Parcelable>()
 
     override fun onViewRecycled(holder: BindingHolder<HomeItem>) {
         super.onViewRecycled(holder)
@@ -15,7 +15,7 @@ class HomeListAdapter(vm: ViewModel) : DataBindingAdapter<HomeItem>(viewModel = 
         if (bind is ItemMovieListBinding) {
             bind.movieListView.layoutManager?.onSaveInstanceState()?.let {
                 bind.item?.let { item ->
-                    stateList[item.title] = it
+                    //stateList[item.title] = it
                 }
             }
         }
@@ -27,9 +27,9 @@ class HomeListAdapter(vm: ViewModel) : DataBindingAdapter<HomeItem>(viewModel = 
 
         if (bind is ItemMovieListBinding) {
             bind.item?.let { item ->
-                stateList[item.title]?.let {
+                /*stateList[item.title]?.let {
                     bind.movieListView.layoutManager?.onRestoreInstanceState(it)
-                }
+                }*/
             }
         }
     }

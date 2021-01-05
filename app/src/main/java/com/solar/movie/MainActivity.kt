@@ -1,6 +1,7 @@
 package com.solar.movie
 
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.util.Log
 import android.view.Menu
 import androidx.appcompat.app.AppCompatActivity
@@ -47,10 +48,17 @@ class MainActivity : BindingActivity() {
         return true
     }
 
+
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         Log.d("onCreateOptionsMenu", "onCreateOptionsMenu")
         menuInflater.inflate(R.menu.nav_bottom, menu)
-        binding.bottomBar.setupWithNavController(menu!!, navController)
+        //binding.bottomBar.setupWithNavController(menu!!, navController)
         return true
+    }
+
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+        super.onSaveInstanceState(outState, outPersistentState)
+
     }
 }
