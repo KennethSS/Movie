@@ -9,7 +9,7 @@ import com.solar.movie.databinding.FragmentMyBinding
 class MyFragment : BindingFragment<FragmentMyBinding>() {
     override val layoutRes: Int = R.layout.fragment_my
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onViewCreated(bind: FragmentMyBinding, savedInstanceState: Bundle?) {
+
     }
 }

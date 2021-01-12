@@ -12,4 +12,8 @@ class MainFragment : BindingFragment<FragmentMainBinding>(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
+
+    override fun onViewCreated(bind: FragmentMainBinding, savedInstanceState: Bundle?) {
+
+    }
 }

@@ -74,33 +74,27 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>() {
         Log.d("HomeFragment", "Observe")
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        Log.d("onViewCreated", "onViewCreated")
-
-        movieThumbViewModel.showMovieDetailLiveData.removeObserver(observer)
-        movieThumbViewModel.showMovieDetailLiveData.observe(viewLifecycleOwner, observer)
-
-        bind?.let { bind ->
-            observe(homeViewModel.popularMovieLiveData) {
-                when(it) {
-                    is NetworkState.Success -> {
-                        bind.homeListView.adapter = HomeListAdapter(movieThumbViewModel).apply {
-                            addAll(listOf(MovieListView("Popular", it.item)))
-                            (view.parent as? ViewGroup)?.doOnPreDraw {
-                                startPostponedEnterTransition()
-                            }
-                        }
-                    }
-                    else -> { }
-                }
-            }
-        }
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
         Log.d("onDestroyView", "onDestroyView")
+    }
+
+    override fun onViewCreated(bind: FragmentHomeBinding, savedInstanceState: Bundle?) {
+        movieThumbViewModel.showMovieDetailLiveData.removeObserver(observer)
+        movieThumbViewModel.showMovieDetailLiveData.observe(viewLifecycleOwner, observer)
+
+        observe(homeViewModel.popularMovieLiveData) {
+            when(it) {
+                is NetworkState.Success -> {
+                    bind.homeListView.adapter = HomeListAdapter(movieThumbViewModel).apply {
+                        addAll(listOf(MovieListView("Popular", it.item)))
+                        (bind.root as? ViewGroup)?.doOnPreDraw {
+                            startPostponedEnterTransition()
+                        }
+                    }
+                }
+                else -> { }
+            }
+        }
     }
 }

@@ -5,7 +5,17 @@ plugins {
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
     id 'androidx.navigation.safeargs.kotlin'
+    id 'jacoco'
 }
+
+//jacoco {
+//    toolVersion = '0.8.5'
+//}
+//
+//tasks.withType(Test) {
+//    jacoco.includeNoLocationClaases = true
+//}
+
 
 android {
     compileSdkVersion build_versions.compile_sdk
@@ -25,6 +35,9 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            testCoverageEnabled = true
         }
     }
 
@@ -82,7 +95,7 @@ dependencies {
     implementation deps.glide.glide
     kapt deps.glide.compiler
 
-    implementation 'com.github.KennethSS:SolarBinding:1.0.1'
+    implementation 'com.github.KennethSS:SolarBinding:1.0.2'
     implementation 'com.github.KennethSS:SolarListView:1.2.0'
     implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.6'
 

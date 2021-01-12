@@ -45,10 +45,13 @@ class MovieDetailFragment : BindingFragment<FragmentMovieDetailBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        bind?.let {
-            it.movieDetailPoster.transitionName = title
-            it.movieDetailTitle.text = title
-        }
+
+    }
+
+    override fun onViewCreated(bind: FragmentMovieDetailBinding, savedInstanceState: Bundle?) {
+        bind.movieDetailPoster.transitionName = title
+        bind.movieDetailTitle.text = title
+
         observe(movieDetailViewModel.movieDetailLiveData) { result ->
             when (result) {
                 is NetworkState.Success -> {
@@ -57,31 +60,31 @@ class MovieDetailFragment : BindingFragment<FragmentMovieDetailBinding>() {
 
                     bind?.let {
                         Glide.with(it.movieDetailPoster)
-                                .load(result.item.poster)
-                                //.apply(RequestOptions().dontTransform())
-                                .listener(object : RequestListener<Drawable> {
-                                    override fun onLoadFailed(
-                                            e: GlideException?,
-                                            model: Any?,
-                                            target: Target<Drawable>?,
-                                            isFirstResource: Boolean
-                                    ): Boolean {
-                                        startPostponedEnterTransition()
-                                        return false
-                                    }
+                            .load(result.item.poster)
+                            //.apply(RequestOptions().dontTransform())
+                            .listener(object : RequestListener<Drawable> {
+                                override fun onLoadFailed(
+                                    e: GlideException?,
+                                    model: Any?,
+                                    target: Target<Drawable>?,
+                                    isFirstResource: Boolean
+                                ): Boolean {
+                                    startPostponedEnterTransition()
+                                    return false
+                                }
 
-                                    override fun onResourceReady(
-                                            resource: Drawable?,
-                                            model: Any?,
-                                            target: Target<Drawable>?,
-                                            dataSource: DataSource?,
-                                            isFirstResource: Boolean
-                                    ): Boolean {
-                                        startPostponedEnterTransition()
-                                        return false
-                                    }
-                                })
-                                .into(it.movieDetailPoster)
+                                override fun onResourceReady(
+                                    resource: Drawable?,
+                                    model: Any?,
+                                    target: Target<Drawable>?,
+                                    dataSource: DataSource?,
+                                    isFirstResource: Boolean
+                                ): Boolean {
+                                    startPostponedEnterTransition()
+                                    return false
+                                }
+                            })
+                            .into(it.movieDetailPoster)
 
                     }
                 }
