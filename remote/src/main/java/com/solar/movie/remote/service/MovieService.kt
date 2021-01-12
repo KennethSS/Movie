@@ -6,6 +6,7 @@ import com.solar.movie.remote.response.movie.popular.MoviePopularItemResponse
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 /**
  *  Created by Kenneth on 12/30/20
@@ -15,7 +16,10 @@ interface MovieService {
     fun getMovieDetailById(): Single<MovieDetailResponse>
 
     @GET("3/movie/{movieId}")
-    suspend fun getMovieDetailByIdFromCoroutine(@Path("movieId") movieId: Int): MovieDetailResponse
+    suspend fun getMovieDetailByIdFromCoroutine(
+        @Path("movieId") movieId: Int,
+        @Query("append_to_response") credits: String = "credits"
+    ): MovieDetailResponse
 
     @GET("3/movie/popular")
     suspend fun getPopularMovie(): PageResponse<MoviePopularItemResponse>

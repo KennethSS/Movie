@@ -1,6 +1,8 @@
 package com.solar.movie.data.entity.mapper
 
+import com.solar.movie.data.entity.ActorEntity
 import com.solar.movie.data.entity.MovieEntity
+import com.solar.movie.domain.repository.model.Actor
 import com.solar.movie.domain.repository.model.Movie
 
 /**
@@ -20,13 +22,22 @@ import com.solar.movie.domain.repository.model.Movie
  *
  **/
 class MovieEntityMapper {
-    fun transformEntityToModel(entity: MovieEntity): Movie {
-        return Movie(
+    fun transformEntityToModel(entity: MovieEntity) = entity.run {
+        Movie(
             id = entity.id,
             title = entity.title,
             desc = entity.desc,
             poster = entity.poster,
-            releaseDate = entity.releaseDate
+            releaseDate = entity.releaseDate,
+            actors = entity.actors.map(::transformActorEntityToActor),
+        )
+    }
+
+    private fun transformActorEntityToActor(entity: ActorEntity) = entity.run {
+        Actor(
+            name = entity.name,
+            profile = entity.profile,
+            character = entity.character
         )
     }
 }

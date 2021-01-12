@@ -23,13 +23,19 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp"
             android:textSize="24sp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
             android:text="Popular Movie"/>
 
         <com.solar.recyclerview.SolarRecyclerView
             android:id="@+id/movie_list_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="12dp"
+            android:clipToPadding="false"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:snapType="Pager"

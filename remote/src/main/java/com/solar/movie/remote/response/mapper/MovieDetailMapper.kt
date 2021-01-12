@@ -1,8 +1,10 @@
 package com.solar.movie.remote.response.mapper
 
+import com.solar.movie.data.entity.ActorEntity
 import com.solar.movie.data.entity.MovieEntity
 import com.solar.movie.remote.IMAGE_BASE_HOST
 import com.solar.movie.remote.UNKNOWN
+import com.solar.movie.remote.response.movie.CastResponse
 import com.solar.movie.remote.response.movie.MovieDetailResponse
 import com.solar.movie.remote.response.movie.popular.MoviePopularItemResponse
 
@@ -29,7 +31,8 @@ class MovieDetailMapper {
             title = response.originalTitle ?: UNKNOWN,
             desc = response.overview ?: UNKNOWN,
             poster = IMAGE_BASE_HOST + response.posterPath,
-            releaseDate = response.releaseDate ?: UNKNOWN)
+            releaseDate = response.releaseDate ?: UNKNOWN,
+            response.credits?.cast?.map(::transformCastToActor) ?: listOf())
     }
 
     fun transformPopularResponseToMovieEntity(response: MoviePopularItemResponse): MovieEntity {
@@ -38,6 +41,15 @@ class MovieDetailMapper {
             title = response.originalTitle ?: UNKNOWN,
             desc = response.overview ?: UNKNOWN,
             poster = IMAGE_BASE_HOST + response.posterPath,
-            releaseDate = response.releaseDate ?: UNKNOWN)
+            releaseDate = response.releaseDate ?: UNKNOWN,
+            listOf())
+    }
+
+    private fun transformCastToActor(response: CastResponse): ActorEntity {
+        return ActorEntity(
+            name = response.name ?: "",
+            profile = IMAGE_BASE_HOST + response.profilePath,
+            character = response.character ?: ""
+        )
     }
 }

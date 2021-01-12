@@ -1,4 +1,4 @@
-package com.solar.movie.data.entity
+package com.solar.movie.domain.repository.model
 
 /**
  * Copyright 2020 Kenneth
@@ -16,11 +16,8 @@ package com.solar.movie.data.entity
  * limitations under the License.
  *
  **/
-data class MovieEntity(
-    val id: Int,
-    val title: String,
-    val desc: String,
-    val poster: String,
-    val releaseDate: String,
-    val actors: List<ActorEntity>
+data class Actor(
+    val name: String,
+    val profile: String,
+    val character: String
 )

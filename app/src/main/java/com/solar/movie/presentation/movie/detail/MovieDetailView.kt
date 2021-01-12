@@ -1,5 +1,7 @@
 package com.solar.movie.presentation.movie.detail
 
+import com.solar.movie.presentation.movie.detail.actor.ActorView
+
 /**
  * Copyright 2020 Kenneth
  *
@@ -19,5 +21,6 @@ package com.solar.movie.presentation.movie.detail
 data class MovieDetailView(
     val title: String,
     val desc: String,
-    val poster: String
+    val poster: String,
+    val actors: List<ActorView>
 )

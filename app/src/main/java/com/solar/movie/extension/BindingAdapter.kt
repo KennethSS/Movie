@@ -1,11 +1,14 @@
 package com.solar.movie.extension
 
+import android.util.Log
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.core.view.doOnPreDraw
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.solar.movie.presentation.movie.detail.actor.ActorView
+import com.solar.recyclerview.adapter.normal.DataBindingAdapter
 
 /**
  * Copyright 2020 Kenneth
@@ -40,5 +43,15 @@ fun loadCircleImage(iv: AppCompatImageView, url: String?) {
             .load(url)
             .apply(RequestOptions.circleCropTransform())
             .into(iv)
+    }
+}
+
+@BindingAdapter("actors")
+fun setActorItems(rv: RecyclerView, items: List<ActorView>?) {
+    items?.let {
+        Log.d("setADapter", "setAdpter")
+        rv.adapter = object : DataBindingAdapter<ActorView>() {}.apply {
+            submitList(items)
+        }
     }
 }

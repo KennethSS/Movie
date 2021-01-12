@@ -1,4 +1,6 @@
-package com.solar.movie.data.entity
+package com.solar.movie.remote.response.movie
+
+import com.google.gson.annotations.SerializedName
 
 /**
  * Copyright 2020 Kenneth
@@ -16,11 +18,9 @@ package com.solar.movie.data.entity
  * limitations under the License.
  *
  **/
-data class MovieEntity(
-    val id: Int,
-    val title: String,
-    val desc: String,
-    val poster: String,
-    val releaseDate: String,
-    val actors: List<ActorEntity>
+data class CreditResponse (
+    @SerializedName("cast")
+    val cast: List<CastResponse>,
+    @SerializedName("crew")
+    val crew: List<CrewResponse>
 )

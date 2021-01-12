@@ -82,15 +82,17 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>() {
     override fun onViewCreated(bind: FragmentHomeBinding, savedInstanceState: Bundle?) {
         movieThumbViewModel.showMovieDetailLiveData.removeObserver(observer)
         movieThumbViewModel.showMovieDetailLiveData.observe(viewLifecycleOwner, observer)
+        //postponeEnterTransition()
 
         observe(homeViewModel.popularMovieLiveData) {
             when(it) {
                 is NetworkState.Success -> {
                     bind.homeListView.adapter = HomeListAdapter(movieThumbViewModel).apply {
                         addAll(listOf(MovieListView("Popular", it.item)))
-                        (bind.root as? ViewGroup)?.doOnPreDraw {
-                            startPostponedEnterTransition()
-                        }
+                    }
+
+                    bind.homeListView.doOnPreDraw {
+                        //startPostponedEnterTransition()
                     }
                 }
                 else -> { }

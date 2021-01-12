@@ -16,11 +16,8 @@ package com.solar.movie.data.entity
  * limitations under the License.
  *
  **/
-data class MovieEntity(
-    val id: Int,
-    val title: String,
-    val desc: String,
-    val poster: String,
-    val releaseDate: String,
-    val actors: List<ActorEntity>
+data class ActorEntity(
+    val name: String,
+    val profile: String,
+    val character: String
 )

@@ -21,5 +21,6 @@ data class Movie(
     val title: String,
     val desc: String,
     val poster: String,
-    val releaseDate: String
+    val releaseDate: String,
+    val actors: List<Actor>
 )

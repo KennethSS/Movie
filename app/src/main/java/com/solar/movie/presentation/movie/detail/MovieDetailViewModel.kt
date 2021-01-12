@@ -6,9 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
 import com.solar.movie.NetworkState
+import com.solar.movie.domain.repository.model.Actor
 import com.solar.movie.domain.repository.model.Movie
 import com.solar.movie.domain.repository.usecase.MovieUseCase
 import com.solar.movie.extension.liveDataScope
+import com.solar.movie.presentation.movie.detail.actor.ActorView
 
 /**
  * Copyright 2020 Kenneth
@@ -51,7 +53,16 @@ class MovieDetailViewModel @ViewModelInject constructor(
         return MovieDetailView(
             title = model.title,
             desc = model.desc,
-            poster = model.poster
+            poster = model.poster,
+            actors = model.actors.map(::mapToActorView)
+        )
+    }
+
+    private fun mapToActorView(actor: Actor) = actor.run {
+        ActorView(
+            name = name,
+            profile = profile,
+            character = character
         )
     }
 }

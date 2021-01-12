@@ -34,59 +34,50 @@ class MovieDetailFragment : BindingFragment<FragmentMovieDetailBinding>() {
 
     override val layoutRes: Int = R.layout.fragment_movie_detail
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
         sharedElementEnterTransition = TransitionInflater.from(context)
-                .inflateTransition(android.R.transition.move).apply {
-                    duration = 300
-                }
-        postponeEnterTransition()
-        return super.onCreateView(inflater, container, savedInstanceState)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+            .inflateTransition(android.R.transition.move).apply {
+                duration = 300
+            }
     }
 
     override fun onViewCreated(bind: FragmentMovieDetailBinding, savedInstanceState: Bundle?) {
         bind.movieDetailPoster.transitionName = title
         bind.movieDetailTitle.text = title
-
+        postponeEnterTransition()
         observe(movieDetailViewModel.movieDetailLiveData) { result ->
             when (result) {
                 is NetworkState.Success -> {
-                    bind?.movie = result.item
+                    bind.movie = result.item
                     Log.d("MovieDetailActivity", result.item.toString())
 
-                    bind?.let {
-                        Glide.with(it.movieDetailPoster)
-                            .load(result.item.poster)
-                            //.apply(RequestOptions().dontTransform())
-                            .listener(object : RequestListener<Drawable> {
-                                override fun onLoadFailed(
-                                    e: GlideException?,
-                                    model: Any?,
-                                    target: Target<Drawable>?,
-                                    isFirstResource: Boolean
-                                ): Boolean {
-                                    startPostponedEnterTransition()
-                                    return false
-                                }
+                    Glide.with(bind.movieDetailPoster)
+                        .load(result.item.poster)
+                        //.apply(RequestOptions().dontTransform())
+                        .listener(object : RequestListener<Drawable> {
+                            override fun onLoadFailed(
+                                e: GlideException?,
+                                model: Any?,
+                                target: Target<Drawable>?,
+                                isFirstResource: Boolean
+                            ): Boolean {
+                                startPostponedEnterTransition()
+                                return false
+                            }
 
-                                override fun onResourceReady(
-                                    resource: Drawable?,
-                                    model: Any?,
-                                    target: Target<Drawable>?,
-                                    dataSource: DataSource?,
-                                    isFirstResource: Boolean
-                                ): Boolean {
-                                    startPostponedEnterTransition()
-                                    return false
-                                }
-                            })
-                            .into(it.movieDetailPoster)
-
-                    }
+                            override fun onResourceReady(
+                                resource: Drawable?,
+                                model: Any?,
+                                target: Target<Drawable>?,
+                                dataSource: DataSource?,
+                                isFirstResource: Boolean
+                            ): Boolean {
+                                startPostponedEnterTransition()
+                                return false
+                            }
+                        })
+                        .into(bind.movieDetailPoster)
                 }
                 else -> {
                 }
