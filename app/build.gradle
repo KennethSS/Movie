@@ -92,6 +92,10 @@ dependencies {
     implementation deps.hilt.common
     kapt deps.hilt.viewmodel_compiler
 
+    implementation deps.room.runtime
+    implementation deps.room.ktx
+    kapt deps.room.compiler
+
     implementation deps.glide.glide
     kapt deps.glide.compiler
 
@@ -103,7 +107,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implementation project(path: ':data')
+    implementation project(path: ':local')
     implementation project(path: ':remote')
+    implementation project(path: ':data')
     implementation project(path: ':domain')
 }

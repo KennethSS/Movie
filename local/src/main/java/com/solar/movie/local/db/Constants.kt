@@ -1,7 +1,4 @@
-package com.solar.movie.presentation.movie.detail
-
-import com.solar.movie.presentation.movie.detail.actor.ActorView
-import com.solar.movie.presentation.movie.detail.backdrop.BackdropView
+package com.solar.movie.local.db
 
 /**
  * Copyright 2020 Kenneth
@@ -19,11 +16,4 @@ import com.solar.movie.presentation.movie.detail.backdrop.BackdropView
  * limitations under the License.
  *
  **/
-data class MovieDetailView(
-    val id: Int,
-    val title: String,
-    val desc: String,
-    val poster: String,
-    val actors: List<ActorView>,
-    val backdrops: List<BackdropView>
-)
+const val DATABASE_NAME = "app.db"

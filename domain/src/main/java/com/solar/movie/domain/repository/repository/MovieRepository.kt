@@ -21,4 +21,7 @@ import com.solar.movie.domain.repository.model.Movie
 interface MovieRepository {
     suspend fun getMovieById(id: Int): Movie
     suspend fun getPopularMovie(): List<Movie>
+
+    suspend fun getFavoriteMovieList(): List<Movie>
+    suspend fun setFavoriteMovie(movie: Movie)
 }

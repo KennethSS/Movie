@@ -1,7 +1,10 @@
-package com.solar.movie.presentation.movie.detail
+package com.solar.movie.local.db.dao
 
-import com.solar.movie.presentation.movie.detail.actor.ActorView
-import com.solar.movie.presentation.movie.detail.backdrop.BackdropView
+import androidx.room.Dao
+import androidx.room.Query
+import com.solar.movie.data.entity.MovieEntity
+import com.solar.movie.local.db.dao.BaseDao
+import com.solar.movie.local.db.entity.MovieLocalEntity
 
 /**
  * Copyright 2020 Kenneth
@@ -19,11 +22,9 @@ import com.solar.movie.presentation.movie.detail.backdrop.BackdropView
  * limitations under the License.
  *
  **/
-data class MovieDetailView(
-    val id: Int,
-    val title: String,
-    val desc: String,
-    val poster: String,
-    val actors: List<ActorView>,
-    val backdrops: List<BackdropView>
-)
+@Dao
+interface MovieDao : BaseDao<MovieLocalEntity> {
+
+    @Query("SELECT * FROM MovieLocalEntity")
+    fun getFavoriteMovieList() : List<MovieLocalEntity>
+}

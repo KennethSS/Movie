@@ -1,17 +1,17 @@
 package com.solar.movie.presentation.movie.detail
 
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.switchMap
+import androidx.lifecycle.*
 import com.solar.movie.NetworkState
 import com.solar.movie.domain.repository.model.Actor
 import com.solar.movie.domain.repository.model.Movie
+import com.solar.movie.domain.repository.usecase.FavoriteUseCase
 import com.solar.movie.domain.repository.usecase.MovieUseCase
 import com.solar.movie.extension.liveDataScope
 import com.solar.movie.presentation.movie.detail.actor.ActorView
 import com.solar.movie.presentation.movie.detail.backdrop.BackdropView
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 /**
  * Copyright 2020 Kenneth
@@ -30,18 +30,22 @@ import com.solar.movie.presentation.movie.detail.backdrop.BackdropView
  *
  **/
 class MovieDetailViewModel @ViewModelInject constructor(
-        private val movieUseCase: MovieUseCase
+    private val movieUseCase: MovieUseCase,
+    private val favoriteUseCase: FavoriteUseCase,
 ) : ViewModel() {
 
     private val _movieDetailLiveData = MutableLiveData<Int>()
     val movieDetailLiveData: LiveData<NetworkState<MovieDetailView>>
 
+    private val _favoriteState = MutableLiveData(false)
+    val favoriteState: LiveData<Boolean> = _favoriteState
+
     init {
         movieDetailLiveData = _movieDetailLiveData.switchMap { id ->
             liveDataScope(
-                    networkCall = {
-                        movieUseCase.getMovieById(id)
-                    }, map = { mapToMovieDetailView(it) }
+                networkCall = {
+                    movieUseCase.getMovieById(id)
+                }, map = { mapToMovieDetailView(it) }
             )
         }
     }
@@ -50,21 +54,46 @@ class MovieDetailViewModel @ViewModelInject constructor(
         _movieDetailLiveData.value = id
     }
 
+    fun setMovieFavorite(movie: MovieDetailView) {
+        viewModelScope.launch(Dispatchers.IO) {
+            runCatching {
+                favoriteUseCase.setFavorite(transformMovieDetailViewToMovie(movie))
+            }.onFailure {
+                // Todo Error Case
+            }.onSuccess {
+                _favoriteState.postValue(true)
+            }
+        }
+    }
+
+    private fun transformMovieDetailViewToMovie(model: MovieDetailView) = model.run {
+        Movie(
+            id = id,
+            title = title,
+            desc = desc,
+            poster = poster,
+            actors = listOf(),
+            backdrops = listOf(),
+            releaseDate = ""
+        )
+    }
+
     private fun mapToMovieDetailView(model: Movie) = model.run {
         MovieDetailView(
-                title = title,
-                desc = desc,
-                poster = poster,
-                actors = actors.map(::mapToActorView),
-                backdrops = backdrops.map(::mapToBackdrop)
+            id = id,
+            title = title,
+            desc = desc,
+            poster = poster,
+            actors = actors.map(::mapToActorView),
+            backdrops = backdrops.map(::mapToBackdrop)
         )
     }
 
     private fun mapToActorView(actor: Actor) = actor.run {
         ActorView(
-                name = name,
-                profile = profile,
-                character = character
+            name = name,
+            profile = profile,
+            character = character
         )
     }
 

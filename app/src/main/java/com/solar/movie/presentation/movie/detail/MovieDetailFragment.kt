@@ -45,6 +45,8 @@ class MovieDetailFragment : BindingFragment<FragmentMovieDetailBinding>() {
     override fun onViewCreated(bind: FragmentMovieDetailBinding, savedInstanceState: Bundle?) {
         bind.movieDetailPoster.transitionName = title
         bind.movieDetailTitle.text = title
+        bind.vm = movieDetailViewModel
+
         postponeEnterTransition()
         observe(movieDetailViewModel.movieDetailLiveData) { result ->
             when (result) {

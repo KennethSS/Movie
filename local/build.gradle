@@ -1,0 +1,21 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+    id 'kotlin-kapt'
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.21"
+
+    // Retrofit && okHttps
+    implementation deps.room.runtime
+    implementation deps.room.ktx
+    kapt deps.room.compiler
+
+    implementation project(path: ':data')
+}

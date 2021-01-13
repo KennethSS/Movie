@@ -1,6 +1,7 @@
 package com.solar.movie
 
 import android.app.Application
+import com.solar.movie.db.AppDatabase
 import dagger.hilt.android.HiltAndroidApp
 
 /**
@@ -22,4 +23,7 @@ import dagger.hilt.android.HiltAndroidApp
 @HiltAndroidApp
 class MovieApp : Application() {
 
+    override fun onCreate() {
+        super.onCreate()
+    }
 }

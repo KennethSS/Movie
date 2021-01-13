@@ -34,11 +34,31 @@ class MovieEntityMapper {
         )
     }
 
+    fun transformMovieToMovieEntity(movie: Movie) = movie.run {
+        MovieEntity(
+            id = id,
+            title = title,
+            desc = desc,
+            poster = poster,
+            releaseDate = releaseDate,
+            actors = actors.map(::transformActorToActorEntity),
+            backdrops = backdrops
+        )
+    }
+
     private fun transformActorEntityToActor(entity: ActorEntity) = entity.run {
         Actor(
-                name = entity.name,
-                profile = entity.profile,
-                character = entity.character
+                name = name,
+                profile = profile,
+                character = character
+        )
+    }
+
+    private fun transformActorToActorEntity(actor: Actor) = actor.run {
+        ActorEntity(
+            name = name,
+            profile = profile,
+            character = character
         )
     }
 }

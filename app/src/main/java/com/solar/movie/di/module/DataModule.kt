@@ -1,8 +1,13 @@
 package com.solar.movie.di.module
 
 
+import android.content.Context
 import com.solar.movie.BuildConfig
+import com.solar.movie.data.local.MovieLocal
 import com.solar.movie.data.remote.MovieRemote
+import com.solar.movie.db.AppDatabase
+import com.solar.movie.local.db.impl.MovieLocalImpl
+import com.solar.movie.local.db.mapper.MovieLocalMapper
 import com.solar.movie.remote.NetworkClient
 import com.solar.movie.remote.impl.MovieRemoteImpl
 import com.solar.movie.remote.response.mapper.MovieDetailMapper
@@ -11,6 +16,7 @@ import dagger.Provides
 import dagger.Reusable
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.android.qualifiers.ApplicationContext
 
 /**
  * Copyright 2020 Kenneth
@@ -36,8 +42,16 @@ object DataModule {
     fun provideMovieDetailMapper(): MovieDetailMapper = MovieDetailMapper()
 
     @Provides
+    fun provideMovieLocalMapper(): MovieLocalMapper = MovieLocalMapper()
+
+    @Provides
     fun provideMovieRemote(mapper: MovieDetailMapper): MovieRemote {
         return MovieRemoteImpl(NetworkClient.provideService(BuildConfig.DEBUG), mapper)
     }
 
+    @Provides
+    fun provideMovieLocal(@ApplicationContext appContext: Context,
+                          mapper: MovieLocalMapper): MovieLocal {
+        return MovieLocalImpl(AppDatabase.getInstance(appContext).movieDao(), mapper)
+    }
 }

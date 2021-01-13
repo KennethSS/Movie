@@ -7,6 +7,10 @@
         <variable
             name="movie"
             type="com.solar.movie.presentation.movie.detail.MovieDetailView" />
+
+        <variable
+            name="vm"
+            type="com.solar.movie.presentation.movie.detail.MovieDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -27,12 +31,26 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/movie_detail_poster"
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="450dp"
-                    android:adjustViewBounds="true" />
+                    android:minHeight="450dp">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/movie_detail_poster"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true" />
+
+                    <androidx.appcompat.widget.AppCompatImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp"
+                        android:layout_gravity="end|top"
+                        android:background="@android:color/transparent"
+                        android:src="@{ vm.favoriteState ? @drawable/ic_baseline_favorite_36: @drawable/ic_baseline_favorite_border_36}"
+                        android:onClick="@{ view -> vm.setMovieFavorite(movie) }"/>
+                </FrameLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"

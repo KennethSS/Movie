@@ -1,6 +1,7 @@
 package com.solar.movie.data.impl
 
 import com.solar.movie.data.entity.mapper.MovieEntityMapper
+import com.solar.movie.data.local.MovieLocal
 import com.solar.movie.data.remote.MovieRemote
 import com.solar.movie.domain.repository.repository.MovieRepository
 import com.solar.movie.domain.repository.model.Movie
@@ -23,10 +24,21 @@ import com.solar.movie.domain.repository.model.Movie
  **/
 class MovieRepositoryImpl(
     private val service: MovieRemote,
+    private val local: MovieLocal,
     private val mapper: MovieEntityMapper
 ) : MovieRepository {
+
+    override suspend fun setFavoriteMovie(movie: Movie) {
+        val entity = mapper.transformMovieToMovieEntity(movie)
+        local.setMovie(entity)
+    }
+
     override suspend fun getMovieById(id: Int): Movie {
         return mapper.transformEntityToModel(service.getMovieDetailById(id))
+    }
+
+    override suspend fun getFavoriteMovieList(): List<Movie> {
+        return local.getFavoriteMovieList().map { mapper.transformEntityToModel(it) }
     }
 
     override suspend fun getPopularMovie(): List<Movie> {

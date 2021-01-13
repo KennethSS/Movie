@@ -1,7 +1,7 @@
-package com.solar.movie.presentation.movie.detail
+package com.solar.movie.data.local
 
-import com.solar.movie.presentation.movie.detail.actor.ActorView
-import com.solar.movie.presentation.movie.detail.backdrop.BackdropView
+import com.solar.movie.data.entity.MovieEntity
+import com.solar.movie.domain.repository.model.Movie
 
 /**
  * Copyright 2020 Kenneth
@@ -19,11 +19,7 @@ import com.solar.movie.presentation.movie.detail.backdrop.BackdropView
  * limitations under the License.
  *
  **/
-data class MovieDetailView(
-    val id: Int,
-    val title: String,
-    val desc: String,
-    val poster: String,
-    val actors: List<ActorView>,
-    val backdrops: List<BackdropView>
-)
+interface MovieLocal {
+    fun setMovie(movie: MovieEntity)
+    fun getFavoriteMovieList(): List<MovieEntity>
+}

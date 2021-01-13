@@ -20,8 +20,5 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.solar.movie.presentation.movie.detail.MovieDetailActivity"
-            android:theme="@style/Theme.Movie.NoActionBar"/>
     </application>
 </manifest>

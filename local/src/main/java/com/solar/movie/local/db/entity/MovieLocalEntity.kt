@@ -1,7 +1,8 @@
-package com.solar.movie.presentation.movie.detail
+package com.solar.movie.local.db.entity
 
-import com.solar.movie.presentation.movie.detail.actor.ActorView
-import com.solar.movie.presentation.movie.detail.backdrop.BackdropView
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 /**
  * Copyright 2020 Kenneth
@@ -19,11 +20,11 @@ import com.solar.movie.presentation.movie.detail.backdrop.BackdropView
  * limitations under the License.
  *
  **/
-data class MovieDetailView(
-    val id: Int,
-    val title: String,
-    val desc: String,
-    val poster: String,
-    val actors: List<ActorView>,
-    val backdrops: List<BackdropView>
+@Entity
+data class MovieLocalEntity (
+    @PrimaryKey
+    @ColumnInfo(name = "id") val id: Int,
+    @ColumnInfo(name = "title") val title: String,
+    @ColumnInfo(name = "desc") val desc: String,
+    @ColumnInfo(name = "poster") val poster: String
 )
