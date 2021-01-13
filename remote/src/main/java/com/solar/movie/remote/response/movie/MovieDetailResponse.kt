@@ -55,5 +55,9 @@ data class MovieDetailResponse(
     @SerializedName("vote_count")
     val voteCount: Int?,
     @SerializedName("credits")
-    val credits: CreditResponse?
+    val credits: CreditResponse?,
+    @SerializedName("videos")
+    val videos: VideoResultResponse?,
+    @SerializedName("images")
+    val images: ImageResponse?
 )

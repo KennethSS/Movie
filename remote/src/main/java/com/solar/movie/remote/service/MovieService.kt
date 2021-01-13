@@ -18,7 +18,7 @@ interface MovieService {
     @GET("3/movie/{movieId}")
     suspend fun getMovieDetailByIdFromCoroutine(
         @Path("movieId") movieId: Int,
-        @Query("append_to_response") credits: String = "credits"
+        @Query("append_to_response") credits: String = "credits,videos,images"
     ): MovieDetailResponse
 
     @GET("3/movie/popular")

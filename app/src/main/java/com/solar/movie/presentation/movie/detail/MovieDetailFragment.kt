@@ -37,7 +37,7 @@ class MovieDetailFragment : BindingFragment<FragmentMovieDetailBinding>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         sharedElementEnterTransition = TransitionInflater.from(context)
-            .inflateTransition(android.R.transition.move).apply {
+            .inflateTransition(R.transition.shared_image_thumb_to_detail).apply {
                 duration = 300
             }
     }

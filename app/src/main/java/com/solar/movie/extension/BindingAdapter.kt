@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.solar.movie.presentation.movie.detail.actor.ActorView
+import com.solar.movie.presentation.movie.detail.backdrop.BackdropView
+import com.solar.recyclerview.SolarRecyclerView
 import com.solar.recyclerview.adapter.normal.DataBindingAdapter
 
 /**
@@ -49,8 +51,17 @@ fun loadCircleImage(iv: AppCompatImageView, url: String?) {
 @BindingAdapter("actors")
 fun setActorItems(rv: RecyclerView, items: List<ActorView>?) {
     items?.let {
-        Log.d("setADapter", "setAdpter")
         rv.adapter = object : DataBindingAdapter<ActorView>() {}.apply {
+            submitList(items)
+        }
+    }
+}
+
+@BindingAdapter("backdrops")
+fun setBackdropItems(rv: RecyclerView, items: List<BackdropView>?) {
+    items?.let {
+        Log.d("backdrop", items.size.toString())
+        rv.adapter = object : DataBindingAdapter<BackdropView>() {}.apply {
             submitList(items)
         }
     }

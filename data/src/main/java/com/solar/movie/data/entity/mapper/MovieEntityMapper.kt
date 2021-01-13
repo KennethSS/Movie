@@ -24,20 +24,21 @@ import com.solar.movie.domain.repository.model.Movie
 class MovieEntityMapper {
     fun transformEntityToModel(entity: MovieEntity) = entity.run {
         Movie(
-            id = entity.id,
-            title = entity.title,
-            desc = entity.desc,
-            poster = entity.poster,
-            releaseDate = entity.releaseDate,
-            actors = entity.actors.map(::transformActorEntityToActor),
+                id = entity.id,
+                title = entity.title,
+                desc = entity.desc,
+                poster = entity.poster,
+                releaseDate = entity.releaseDate,
+                actors = entity.actors.map(::transformActorEntityToActor),
+                backdrops = entity.backdrops
         )
     }
 
     private fun transformActorEntityToActor(entity: ActorEntity) = entity.run {
         Actor(
-            name = entity.name,
-            profile = entity.profile,
-            character = entity.character
+                name = entity.name,
+                profile = entity.profile,
+                character = entity.character
         )
     }
 }

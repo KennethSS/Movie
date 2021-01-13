@@ -22,5 +22,6 @@ data class MovieEntity(
     val desc: String,
     val poster: String,
     val releaseDate: String,
-    val actors: List<ActorEntity>
+    val actors: List<ActorEntity>,
+    val backdrops: List<String>
 )

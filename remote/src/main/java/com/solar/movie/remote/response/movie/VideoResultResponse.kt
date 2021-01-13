@@ -1,7 +1,6 @@
-package com.solar.movie.presentation.movie.detail
+package com.solar.movie.remote.response.movie
 
-import com.solar.movie.presentation.movie.detail.actor.ActorView
-import com.solar.movie.presentation.movie.detail.backdrop.BackdropView
+import com.google.gson.annotations.SerializedName
 
 /**
  * Copyright 2020 Kenneth
@@ -19,10 +18,7 @@ import com.solar.movie.presentation.movie.detail.backdrop.BackdropView
  * limitations under the License.
  *
  **/
-data class MovieDetailView(
-    val title: String,
-    val desc: String,
-    val poster: String,
-    val actors: List<ActorView>,
-    val backdrops: List<BackdropView>
+data class VideoResultResponse(
+        @SerializedName("results")
+        val results: List<VideoItemResponse>
 )

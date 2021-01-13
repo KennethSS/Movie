@@ -11,6 +11,7 @@ import com.solar.movie.domain.repository.model.Movie
 import com.solar.movie.domain.repository.usecase.MovieUseCase
 import com.solar.movie.extension.liveDataScope
 import com.solar.movie.presentation.movie.detail.actor.ActorView
+import com.solar.movie.presentation.movie.detail.backdrop.BackdropView
 
 /**
  * Copyright 2020 Kenneth
@@ -29,7 +30,7 @@ import com.solar.movie.presentation.movie.detail.actor.ActorView
  *
  **/
 class MovieDetailViewModel @ViewModelInject constructor(
-    private val movieUseCase: MovieUseCase
+        private val movieUseCase: MovieUseCase
 ) : ViewModel() {
 
     private val _movieDetailLiveData = MutableLiveData<Int>()
@@ -38,9 +39,9 @@ class MovieDetailViewModel @ViewModelInject constructor(
     init {
         movieDetailLiveData = _movieDetailLiveData.switchMap { id ->
             liveDataScope(
-                networkCall = {
-                    movieUseCase.getMovieById(id)
-                }, map = { mapToMovieDetailView(it) }
+                    networkCall = {
+                        movieUseCase.getMovieById(id)
+                    }, map = { mapToMovieDetailView(it) }
             )
         }
     }
@@ -49,20 +50,23 @@ class MovieDetailViewModel @ViewModelInject constructor(
         _movieDetailLiveData.value = id
     }
 
-    private fun mapToMovieDetailView(model: Movie): MovieDetailView {
-        return MovieDetailView(
-            title = model.title,
-            desc = model.desc,
-            poster = model.poster,
-            actors = model.actors.map(::mapToActorView)
+    private fun mapToMovieDetailView(model: Movie) = model.run {
+        MovieDetailView(
+                title = title,
+                desc = desc,
+                poster = poster,
+                actors = actors.map(::mapToActorView),
+                backdrops = backdrops.map(::mapToBackdrop)
         )
     }
 
     private fun mapToActorView(actor: Actor) = actor.run {
         ActorView(
-            name = name,
-            profile = profile,
-            character = character
+                name = name,
+                profile = profile,
+                character = character
         )
     }
+
+    private fun mapToBackdrop(url: String) = BackdropView(url)
 }

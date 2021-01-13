@@ -1,7 +1,7 @@
-package com.solar.movie.presentation.movie.detail
+package com.solar.movie.presentation.movie.detail.backdrop
 
-import com.solar.movie.presentation.movie.detail.actor.ActorView
-import com.solar.movie.presentation.movie.detail.backdrop.BackdropView
+import com.solar.movie.R
+import com.solar.recyclerview.adapter.holder.ItemType
 
 /**
  * Copyright 2020 Kenneth
@@ -19,10 +19,7 @@ import com.solar.movie.presentation.movie.detail.backdrop.BackdropView
  * limitations under the License.
  *
  **/
-data class MovieDetailView(
-    val title: String,
-    val desc: String,
-    val poster: String,
-    val actors: List<ActorView>,
-    val backdrops: List<BackdropView>
-)
+data class BackdropView(
+        val imgUrl: String,
+        override val layoutRes: Int = R.layout.item_backdrop
+) : ItemType

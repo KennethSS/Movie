@@ -4,6 +4,7 @@ import com.solar.movie.data.entity.ActorEntity
 import com.solar.movie.data.entity.MovieEntity
 import com.solar.movie.remote.IMAGE_BASE_HOST
 import com.solar.movie.remote.UNKNOWN
+import com.solar.movie.remote.response.movie.BackdropResponse
 import com.solar.movie.remote.response.movie.CastResponse
 import com.solar.movie.remote.response.movie.MovieDetailResponse
 import com.solar.movie.remote.response.movie.popular.MoviePopularItemResponse
@@ -25,31 +26,36 @@ import com.solar.movie.remote.response.movie.popular.MoviePopularItemResponse
  *
  **/
 class MovieDetailMapper {
-    fun transformResponseToEntity(response: MovieDetailResponse): MovieEntity {
-        return MovieEntity(
-            id = response.id ?: 0,
-            title = response.originalTitle ?: UNKNOWN,
-            desc = response.overview ?: UNKNOWN,
-            poster = IMAGE_BASE_HOST + response.posterPath,
-            releaseDate = response.releaseDate ?: UNKNOWN,
-            response.credits?.cast?.map(::transformCastToActor) ?: listOf())
+    fun transformResponseToEntity(response: MovieDetailResponse) = response.run {
+        MovieEntity(
+                id = id ?: 0,
+                title = originalTitle ?: UNKNOWN,
+                desc = overview ?: UNKNOWN,
+                poster = IMAGE_BASE_HOST + posterPath,
+                releaseDate = releaseDate ?: UNKNOWN,
+                actors = credits?.cast?.map(::transformCastToActor) ?: listOf(),
+                backdrops = response.images?.backdrops?.map(::transformBackdropToImageUrls) ?: listOf())
     }
 
-    fun transformPopularResponseToMovieEntity(response: MoviePopularItemResponse): MovieEntity {
-        return MovieEntity(
-            id = response.id ?: 0,
-            title = response.originalTitle ?: UNKNOWN,
-            desc = response.overview ?: UNKNOWN,
-            poster = IMAGE_BASE_HOST + response.posterPath,
-            releaseDate = response.releaseDate ?: UNKNOWN,
-            listOf())
+    fun transformPopularResponseToMovieEntity(response: MoviePopularItemResponse) = response.run {
+        MovieEntity(
+                id = id ?: 0,
+                title = originalTitle ?: UNKNOWN,
+                desc = overview ?: UNKNOWN,
+                poster = IMAGE_BASE_HOST + posterPath,
+                releaseDate = releaseDate ?: UNKNOWN,
+                actors = listOf(),
+                backdrops = listOf()
+        )
     }
+
+    private fun transformBackdropToImageUrls(response: BackdropResponse): String = IMAGE_BASE_HOST + response.filePath
 
     private fun transformCastToActor(response: CastResponse): ActorEntity {
         return ActorEntity(
-            name = response.name ?: "",
-            profile = IMAGE_BASE_HOST + response.profilePath,
-            character = response.character ?: ""
+                name = response.name ?: "",
+                profile = IMAGE_BASE_HOST + response.profilePath,
+                character = response.character ?: ""
         )
     }
 }

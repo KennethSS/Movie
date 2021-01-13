@@ -30,7 +30,7 @@
             app:cardElevation="6dp">
 
             <me.ibrahimsn.lib.SmoothBottomBar
-                android:id="@+id/bottomBar"
+                android:id="@+id/bottom_bar"
                 android:layout_width="match_parent"
                 android:layout_height="70dp"
                 app:backgroundColor="@color/design_default_color_primary"

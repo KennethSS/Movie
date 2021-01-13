@@ -2,6 +2,8 @@ package com.solar.movie.presentation.home
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatImageView
@@ -99,4 +101,6 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>() {
             }
         }
     }
+
+
 }
