@@ -3,6 +3,7 @@
 <p align="center">Movie is sample based on MVVM architecture for Android</br>
 This data flow is on repository pattern.</p>
 
+![logo](https://github.com/KennethSS/Movie/blob/master/preview/demo.png)
 
 
 ## 📝 License
