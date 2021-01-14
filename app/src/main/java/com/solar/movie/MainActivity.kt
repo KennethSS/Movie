@@ -16,6 +16,7 @@ class MainActivity : BindingActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding
         supportActionBar?.hide()
         if (MOVIE_KEY.isEmpty()) {
             Toast.makeText(this, R.string.api_key_empty, Toast.LENGTH_SHORT).show()
