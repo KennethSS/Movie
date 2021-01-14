@@ -1,7 +1,6 @@
 package com.solar.movie.presentation.favorite
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.viewModels
 import com.solar.library.binding.fragment.BindingFragment
 import com.solar.movie.NetworkState

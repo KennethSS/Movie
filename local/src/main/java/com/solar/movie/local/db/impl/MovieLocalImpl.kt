@@ -2,7 +2,6 @@ package com.solar.movie.local.db.impl
 
 import com.solar.movie.data.entity.MovieEntity
 import com.solar.movie.data.local.MovieLocal
-import com.solar.movie.local.db.dao.BaseDao
 import com.solar.movie.local.db.dao.MovieDao
 import com.solar.movie.local.db.mapper.MovieLocalMapper
 

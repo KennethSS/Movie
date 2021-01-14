@@ -13,7 +13,6 @@ import com.solar.movie.remote.impl.MovieRemoteImpl
 import com.solar.movie.remote.response.mapper.MovieDetailMapper
 import dagger.Module
 import dagger.Provides
-import dagger.Reusable
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext

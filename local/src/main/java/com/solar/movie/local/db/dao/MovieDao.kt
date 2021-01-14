@@ -2,8 +2,6 @@ package com.solar.movie.local.db.dao
 
 import androidx.room.Dao
 import androidx.room.Query
-import com.solar.movie.data.entity.MovieEntity
-import com.solar.movie.local.db.dao.BaseDao
 import com.solar.movie.local.db.entity.MovieLocalEntity
 
 /**

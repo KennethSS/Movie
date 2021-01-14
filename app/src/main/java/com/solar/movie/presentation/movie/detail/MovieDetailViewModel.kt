@@ -11,7 +11,6 @@ import com.solar.movie.extension.liveDataScope
 import com.solar.movie.presentation.movie.detail.actor.ActorView
 import com.solar.movie.presentation.movie.detail.backdrop.BackdropView
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 
 /**

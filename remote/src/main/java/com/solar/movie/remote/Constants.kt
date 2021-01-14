@@ -17,6 +17,6 @@ package com.solar.movie.remote
  *
  **/
 const val MOVIE_HOST = "https://api.themoviedb.org/"
-const val MOVIE_KEY = "1758a2b5e3805a44db15e138d4845e60"
+const val MOVIE_KEY = ""
 const val UNKNOWN = "Unknown"
 const val IMAGE_BASE_HOST = "https://image.tmdb.org/t/p/w500"

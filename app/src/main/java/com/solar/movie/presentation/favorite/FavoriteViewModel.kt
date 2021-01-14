@@ -1,12 +1,13 @@
 package com.solar.movie.presentation.favorite
 
-import android.util.Log
 import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.solar.movie.NetworkState
 import com.solar.movie.domain.repository.model.Movie
 import com.solar.movie.domain.repository.usecase.FavoriteUseCase
-import com.solar.movie.extension.liveDataScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -35,25 +36,13 @@ class FavoriteViewModel @ViewModelInject constructor(
         get() = _favoriteMovieListLiveData
 
     init {
-        /*favoriteMovieListLiveData = _favoriteMovieListLiveData.switchMap { id ->
-            liveDataScope(
-                networkCall = {
-                    favoriteUseCase.getFavoriteMovieList()
-                }, map = { it.map(::transformMovieToFavoriteMovieView) }
-            )
-        }*/
-
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val result = favoriteUseCase.getFavoriteMovieList()
-
-                Log.d("FavoriteVieWModel", "size ${result.size}")
-
                 val map = NetworkState.Success(result.map(::transformMovieToFavoriteMovieView))
                 _favoriteMovieListLiveData.postValue(map)
-
             } catch (e: Exception) {
-                Log.d("FavoriteVieWModel", "Faildget favorite")
+
             }
 
         }

@@ -3,8 +3,8 @@ package com.solar.movie.data.impl
 import com.solar.movie.data.entity.mapper.MovieEntityMapper
 import com.solar.movie.data.local.MovieLocal
 import com.solar.movie.data.remote.MovieRemote
-import com.solar.movie.domain.repository.repository.MovieRepository
 import com.solar.movie.domain.repository.model.Movie
+import com.solar.movie.domain.repository.repository.MovieRepository
 
 /**
  * Copyright 2020 Kenneth

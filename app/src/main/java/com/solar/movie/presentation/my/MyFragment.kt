@@ -1,7 +1,6 @@
 package com.solar.movie.presentation.my
 
 import android.os.Bundle
-import android.view.View
 import com.solar.library.binding.fragment.BindingFragment
 import com.solar.movie.R
 import com.solar.movie.databinding.FragmentMyBinding

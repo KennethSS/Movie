@@ -1,7 +1,6 @@
 package com.solar.movie
 
 import android.app.Application
-import com.solar.movie.db.AppDatabase
 import dagger.hilt.android.HiltAndroidApp
 
 /**

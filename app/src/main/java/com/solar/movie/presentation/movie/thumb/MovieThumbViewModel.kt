@@ -2,14 +2,10 @@ package com.solar.movie.presentation.movie.thumb
 
 import android.view.View
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.os.bundleOf
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigatorExtras
-import androidx.navigation.ui.NavigationUI
-import com.solar.movie.MainFragmentDirections
 import com.solar.movie.R
 
 class MovieThumbViewModel : ViewModel() {

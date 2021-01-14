@@ -1,7 +1,6 @@
 package com.solar.movie.data.local
 
 import com.solar.movie.data.entity.MovieEntity
-import com.solar.movie.domain.repository.model.Movie
 
 /**
  * Copyright 2020 Kenneth

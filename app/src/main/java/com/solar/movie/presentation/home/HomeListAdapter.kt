@@ -1,6 +1,5 @@
 package com.solar.movie.presentation.home
 
-import android.os.Parcelable
 import androidx.lifecycle.ViewModel
 import com.solar.movie.databinding.ItemMovieListBinding
 import com.solar.recyclerview.adapter.holder.BindingHolder
