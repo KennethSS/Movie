@@ -4,4 +4,6 @@
     <string name="actors">Actors</string>
     <string name="overview">Overview</string>
     <string name="backdrop">Backdrop</string>
+
+    <string name="api_key_empty">Movie API Key is Empty, https://developers.themoviedb.org/3/getting-started/introduction</string>
 </resources>
