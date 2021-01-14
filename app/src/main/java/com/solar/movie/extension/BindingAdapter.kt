@@ -2,14 +2,14 @@ package com.solar.movie.extension
 
 import android.util.Log
 import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.view.doOnPreDraw
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.solar.movie.presentation.favorite.FavoriteItemViewModel
+import com.solar.movie.presentation.favorite.FavoriteMovieView
 import com.solar.movie.presentation.movie.detail.actor.ActorView
 import com.solar.movie.presentation.movie.detail.backdrop.BackdropView
-import com.solar.recyclerview.SolarRecyclerView
 import com.solar.recyclerview.adapter.normal.DataBindingAdapter
 
 /**
@@ -62,6 +62,16 @@ fun setBackdropItems(rv: RecyclerView, items: List<BackdropView>?) {
     items?.let {
         Log.d("backdrop", items.size.toString())
         rv.adapter = object : DataBindingAdapter<BackdropView>() {}.apply {
+            submitList(items)
+        }
+    }
+}
+
+@BindingAdapter("favorites", "vm", requireAll = true)
+fun setMovieFavorites(rv: RecyclerView, items: List<FavoriteMovieView>?, vm: FavoriteItemViewModel?) {
+    items?.let {
+        Log.d("backdrop", items.size.toString())
+        rv.adapter = object : DataBindingAdapter<FavoriteMovieView>(viewModel = vm) {}.apply {
             submitList(items)
         }
     }

@@ -26,11 +26,21 @@ class MovieLocalImpl(
     private val movieDao: MovieDao,
     private val mapper: MovieLocalMapper) : MovieLocal {
 
-    override fun setMovie(movie: MovieEntity) {
+    override suspend fun setMovie(movie: MovieEntity) {
         movieDao.insert(mapper.transformMovieEntityToMovieLocalEntity(movie))
     }
 
-    override fun getFavoriteMovieList(): List<MovieEntity> {
+    override suspend fun deleteMovie(id: Int) {
+        movieDao.deleteById(id)
+    }
+
+    override suspend fun getFavoriteMovie(id: Int): MovieEntity {
+        return mapper.transformMovieLocalEntityToMovieEntity(movieDao.getFavoriteMovieById(id))
+    }
+
+    override suspend fun getFavoriteMovieList(): List<MovieEntity> {
+        println("getFavoriteMovieList!")
+
         return movieDao.getFavoriteMovieList().map { mapper.transformMovieLocalEntityToMovieEntity(it) }
     }
 }

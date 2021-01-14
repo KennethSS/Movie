@@ -20,6 +20,7 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:overScrollMode="never"
             android:background="@drawable/bg_gradient_pink"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -45,9 +46,10 @@
                     <androidx.appcompat.widget.AppCompatImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_margin="24dp"
                         android:padding="12dp"
                         android:layout_gravity="end|top"
-                        android:background="@android:color/transparent"
+                        android:background="?android:attr/selectableItemBackgroundBorderless"
                         android:src="@{ vm.favoriteState ? @drawable/ic_baseline_favorite_36: @drawable/ic_baseline_favorite_border_36}"
                         android:onClick="@{ view -> vm.setMovieFavorite(movie) }"/>
                 </FrameLayout>

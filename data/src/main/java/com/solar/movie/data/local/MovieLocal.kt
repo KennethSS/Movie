@@ -20,6 +20,8 @@ import com.solar.movie.domain.repository.model.Movie
  *
  **/
 interface MovieLocal {
-    fun setMovie(movie: MovieEntity)
-    fun getFavoriteMovieList(): List<MovieEntity>
+    suspend fun setMovie(movie: MovieEntity)
+    suspend fun deleteMovie(id: Int)
+    suspend fun getFavoriteMovie(id: Int): MovieEntity
+    suspend fun getFavoriteMovieList(): List<MovieEntity>
 }

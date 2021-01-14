@@ -26,4 +26,16 @@ class FavoriteUseCase(
     suspend fun setFavorite(movie: Movie) {
         movieRepository.setFavoriteMovie(movie)
     }
+
+    suspend fun deleteFavorite(id: Int) {
+        movieRepository.deleteFavoriteMovie(id)
+    }
+
+    suspend fun getFavoriteMovie(id: Int): Movie {
+        return movieRepository.getFavoriteMovie(id)
+    }
+
+    suspend fun getFavoriteMovieList(): List<Movie> {
+        return movieRepository.getFavoriteMovieList()
+    }
 }

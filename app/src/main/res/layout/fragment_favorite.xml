@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="itemVm"
+            type="com.solar.movie.presentation.favorite.FavoriteItemViewModel" />
 
+        <variable
+            name="favoriteVm"
+            type="com.solar.movie.presentation.favorite.FavoriteViewModel" />
     </data>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/favorite_list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/black">
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager">
 
     </androidx.recyclerview.widget.RecyclerView>
 </layout>

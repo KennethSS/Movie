@@ -24,7 +24,12 @@ import com.solar.movie.local.db.entity.MovieLocalEntity
  **/
 @Dao
 interface MovieDao : BaseDao<MovieLocalEntity> {
-
     @Query("SELECT * FROM MovieLocalEntity")
-    fun getFavoriteMovieList() : List<MovieLocalEntity>
+    suspend fun getFavoriteMovieList() : List<MovieLocalEntity>
+
+    @Query("SELECT * FROM MovieLocalEntity where id = :id")
+    suspend fun getFavoriteMovieById(id: Int) : MovieLocalEntity
+
+    @Query("DELETE FROM MovieLocalEntity WHERE id = :id")
+    suspend fun deleteById(id: Int)
 }

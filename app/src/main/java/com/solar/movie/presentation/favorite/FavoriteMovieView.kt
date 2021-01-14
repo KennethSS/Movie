@@ -1,6 +1,7 @@
-package com.solar.movie.domain.repository.repository
+package com.solar.movie.presentation.favorite
 
-import com.solar.movie.domain.repository.model.Movie
+import com.solar.movie.R
+import com.solar.recyclerview.adapter.holder.ItemType
 
 /**
  * Copyright 2020 Kenneth
@@ -18,12 +19,10 @@ import com.solar.movie.domain.repository.model.Movie
  * limitations under the License.
  *
  **/
-interface MovieRepository {
-    suspend fun getMovieById(id: Int): Movie
-    suspend fun getPopularMovie(): List<Movie>
-
-    suspend fun getFavoriteMovie(id: Int): Movie
-    suspend fun getFavoriteMovieList(): List<Movie>
-    suspend fun setFavoriteMovie(movie: Movie)
-    suspend fun deleteFavoriteMovie(id: Int)
-}
+data class FavoriteMovieView(
+    val id: Int,
+    val poster: String,
+    val name: String,
+    val releaseDate: String,
+    override val layoutRes: Int = R.layout.item_movie_favorite
+) : ItemType

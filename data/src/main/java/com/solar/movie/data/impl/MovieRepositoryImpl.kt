@@ -33,11 +33,16 @@ class MovieRepositoryImpl(
         local.setMovie(entity)
     }
 
+    override suspend fun deleteFavoriteMovie(id: Int) {
+        local.deleteMovie(id)
+    }
+
     override suspend fun getMovieById(id: Int): Movie {
         return mapper.transformEntityToModel(service.getMovieDetailById(id))
     }
 
     override suspend fun getFavoriteMovieList(): List<Movie> {
+        println("getFavoriteMovieList data")
         return local.getFavoriteMovieList().map { mapper.transformEntityToModel(it) }
     }
 
@@ -45,5 +50,9 @@ class MovieRepositoryImpl(
         return service.getPopularMovie().map {
             mapper.transformEntityToModel(it)
         }
+    }
+
+    override suspend fun getFavoriteMovie(id: Int): Movie {
+        return mapper.transformEntityToModel(local.getFavoriteMovie(id))
     }
 }

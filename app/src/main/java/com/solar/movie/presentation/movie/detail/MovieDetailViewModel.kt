@@ -11,6 +11,7 @@ import com.solar.movie.extension.liveDataScope
 import com.solar.movie.presentation.movie.detail.actor.ActorView
 import com.solar.movie.presentation.movie.detail.backdrop.BackdropView
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
 
 /**
@@ -30,28 +31,42 @@ import kotlinx.coroutines.launch
  *
  **/
 class MovieDetailViewModel @ViewModelInject constructor(
-    private val movieUseCase: MovieUseCase,
-    private val favoriteUseCase: FavoriteUseCase,
+        private val movieUseCase: MovieUseCase,
+        private val favoriteUseCase: FavoriteUseCase,
 ) : ViewModel() {
 
     private val _movieDetailLiveData = MutableLiveData<Int>()
     val movieDetailLiveData: LiveData<NetworkState<MovieDetailView>>
 
-    private val _favoriteState = MutableLiveData(false)
-    val favoriteState: LiveData<Boolean> = _favoriteState
+    private val _favoriteState = MutableLiveData<Int>()
+    val favoriteState: LiveData<Boolean>
 
     init {
         movieDetailLiveData = _movieDetailLiveData.switchMap { id ->
             liveDataScope(
-                networkCall = {
-                    movieUseCase.getMovieById(id)
-                }, map = { mapToMovieDetailView(it) }
+                    networkCall = {
+                        movieUseCase.getMovieById(id)
+                    }, map = { mapToMovieDetailView(it) }
             )
+        }
+
+        favoriteState = _favoriteState.switchMap { id ->
+            liveData(Dispatchers.IO) {
+                emit(false)
+                runCatching {
+                    favoriteUseCase.getFavoriteMovie(id)
+                }.onSuccess {
+                    emit(true)
+                }.onFailure {
+                    emit(false)
+                }
+            }
         }
     }
 
     fun getMovieDetail(id: Int) {
         _movieDetailLiveData.value = id
+        _favoriteState.value = id
     }
 
     fun setMovieFavorite(movie: MovieDetailView) {
@@ -61,39 +76,39 @@ class MovieDetailViewModel @ViewModelInject constructor(
             }.onFailure {
                 // Todo Error Case
             }.onSuccess {
-                _favoriteState.postValue(true)
+                _favoriteState.postValue(movie.id)
             }
         }
     }
 
     private fun transformMovieDetailViewToMovie(model: MovieDetailView) = model.run {
         Movie(
-            id = id,
-            title = title,
-            desc = desc,
-            poster = poster,
-            actors = listOf(),
-            backdrops = listOf(),
-            releaseDate = ""
+                id = id,
+                title = title,
+                desc = desc,
+                poster = poster,
+                actors = listOf(),
+                backdrops = listOf(),
+                releaseDate = ""
         )
     }
 
     private fun mapToMovieDetailView(model: Movie) = model.run {
         MovieDetailView(
-            id = id,
-            title = title,
-            desc = desc,
-            poster = poster,
-            actors = actors.map(::mapToActorView),
-            backdrops = backdrops.map(::mapToBackdrop)
+                id = id,
+                title = title,
+                desc = desc,
+                poster = poster,
+                actors = actors.map(::mapToActorView),
+                backdrops = backdrops.map(::mapToBackdrop)
         )
     }
 
     private fun mapToActorView(actor: Actor) = actor.run {
         ActorView(
-            name = name,
-            profile = profile,
-            character = character
+                name = name,
+                profile = profile,
+                character = character
         )
     }
 
