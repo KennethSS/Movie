@@ -39,7 +39,7 @@ This data flow is on repository pattern.</p>
 ![CleanArchitecture](https://github.com/KennethSS/Movie/blob/master/Preview/CleanArchitecture.jpg)
 ![MVVM Architecture](https://github.com/KennethSS/Movie/blob/master/Preview/mvvm.png)
 
-## 📝 License
+## License
 
 ```
 Copyright 2020 KennethSS
