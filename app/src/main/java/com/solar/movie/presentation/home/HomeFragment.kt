@@ -9,6 +9,7 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import com.solar.library.binding.fragment.BindingFragment
 import com.solar.movie.MainFragment
+import com.solar.movie.MainFragmentDirections
 import com.solar.movie.NetworkState
 import com.solar.movie.R
 import com.solar.movie.databinding.FragmentHomeBinding
@@ -35,12 +36,13 @@ class HomeFragment : BindingFragment<FragmentHomeBinding>() {
                     .setEnterAnim(android.R.anim.fade_in)
                     .setExitAnim(android.R.anim.fade_out)
                     .build()
+
                 parentFragment.parentFragment?.let { host ->
                     (host as MainFragment).findNavController().navigate(
-                        R.id.movieDetailFragment,
-                        bundleOf("movieId" to thumb.id, "title" to thumb.name), // Bundle of args
-                        options, // NavOptions
-                        extras)
+                            MainFragmentDirections.actionMainFragmentToMovieDetailFragment(thumb.id, thumb.name),
+                        //bundleOf("movieId" to thumb.id, "title" to thumb.name), // Bundle of args
+                        options) // NavOptions
+                        //extras)
                 }
             }
         }

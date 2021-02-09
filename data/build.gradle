@@ -11,4 +11,15 @@ java {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.4.21"
     implementation project(path: ':domain')
+
+    testImplementation deps.test.mockito_core
+    testImplementation deps.test.mockito_inline
+    testImplementation deps.test.mockito_android
+    testImplementation deps.test.mockito_kotlin
+
+    testImplementation deps.coroutines.test
+
+    testImplementation deps.test.junit
+    testImplementation deps.test.core
+    testImplementation deps.test.ext_junit
 }
