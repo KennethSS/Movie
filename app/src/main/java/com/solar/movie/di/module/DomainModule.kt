@@ -11,7 +11,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.Reusable
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.components.SingletonComponent
 
 /**
  * Copyright 2020 Kenneth
@@ -30,7 +30,7 @@ import dagger.hilt.android.components.ApplicationComponent
  *
  **/
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 object DomainModule {
 
     @Provides

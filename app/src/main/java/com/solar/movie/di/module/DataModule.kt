@@ -14,8 +14,8 @@ import com.solar.movie.remote.response.mapper.MovieDetailMapper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 
 /**
  * Copyright 2020 Kenneth
@@ -34,7 +34,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
  *
  **/
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 object DataModule {
 
     @Provides
