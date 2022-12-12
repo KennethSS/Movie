@@ -1,6 +1,7 @@
 # <p align="center">Movie</p>
 
-<p align="center">Movie is sample based on MVVM architecture for Android</br>
+<p align="center">Movie is sample based on MVI architecture for Android</br>
+This design was created based on Naver's SeriesOn.</br>
 This data flow is on repository pattern.</p>
 
 
@@ -9,35 +10,20 @@ This data flow is on repository pattern.</p>
 
 ## Tech stack & Open source libraries
 
-- Minimum SDK level 21
-- [Kotlin](https://kotlinlang.org/) based, [Coroutines](https://github.com/Kotlin/kotlinx.coroutines)
-- Hilt (alpha) for dependency injection.
+- Minimum SDK level 28
+- 100% [Kotlin](https://kotlinlang.org/) based, [Coroutines](https://github.com/Kotlin/kotlinx.coroutines), Flow
+- 100% Jetpack Compose
+- Hilt for dependency injection.
 - JetPack
-  - LiveData - Bbservable data holder class to notify to views.
-  - Lifecycle - Response to a change in the lifecycle status of another component
   - ViewModel - UI related data holder, lifecycle aware.
-  - Room Persistence - Construct a database abstraction layer over SQLite 
   - Navigation - Framework for navigating between destinations
+  - Lifecycle - Response to a change in the lifecycle status of another component
 - Architecture
-  - MVVM Architecture (View - DataBinding - ViewModel - Model)
+  - MVI Architecture (Model - View - Intent)
   - Repository pattern
   - Clean Architecture
 - [Retrofit2 & OkHttp3](https://github.com/square/retrofit) - construct the REST APIs and paging network data.
-- [Glide](https://github.com/bumptech/glide) - loading images.
-- [Material-Components](https://github.com/material-components/material-components-android) - Material design components like ripple animation, cardView.
-- [SmoothBottomBar](https://github.com/ibrahimsn98/SmoothBottomBar) - A lightweight material bottom navigation bar
-
-- Solar libraries
-  - [SolarBinding](https://github.com/KennethSS/SolarBinding) - A SolarBinding with databinding for andorid
-  - [SolarListView](https://github.com/KennethSS/SolarListView) - A SimpleRecyclerView with databinding for andorid list
-
-## MAD Score
-![summary](https://github.com/KennethSS/Movie/blob/master/Preview/summary.png)
-![kotlin](https://github.com/KennethSS/Movie/blob/master/Preview/kotlin.png)
-
-## Architecture
-![CleanArchitecture](https://github.com/KennethSS/Movie/blob/master/Preview/CleanArchitecture.jpg)
-![MVVM Architecture](https://github.com/KennethSS/Movie/blob/master/Preview/mvvm.png)
+- [Coil](https://coil-kt.github.io/coil/compose/) - loading images.
 
 ## License
 
