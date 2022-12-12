@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="testRunner" value="GRADLE" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleJvm" value="11" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/core/designsystem" />
+            <option value="$PROJECT_DIR$/core/mvi" />
+            <option value="$PROJECT_DIR$/feature" />
+            <option value="$PROJECT_DIR$/feature/main" />
+            <option value="$PROJECT_DIR$/feature/movie" />
+            <option value="$PROJECT_DIR$/feature/movie-detail" />
+            <option value="$PROJECT_DIR$/feature/my" />
+            <option value="$PROJECT_DIR$/feature/search" />
+            <option value="$PROJECT_DIR$/shared" />
+            <option value="$PROJECT_DIR$/shared/data" />
+            <option value="$PROJECT_DIR$/shared/domain" />
+            <option value="$PROJECT_DIR$/shared/remote" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
