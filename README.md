@@ -4,9 +4,7 @@
 This design was created based on Naver's SeriesOn.</br>
 This data flow is on repository pattern.</p>
 
-
-
-<img src="https://github.com/KennethSS/Movie/blob/master/Preview/demo.gif" align="right" width="30%"></img>
+<img src="https://user-images.githubusercontent.com/39362939/207137825-eb83696b-0408-4e8a-b2d8-02b11b5a9d4e.gif" align="right" width="30%"></img>
 
 ## Tech stack & Open source libraries
 
