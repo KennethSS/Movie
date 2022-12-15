@@ -16,7 +16,7 @@ class MovieDbRemoteDataSourceImpl @Inject constructor(
         return movieDbService.getMovieDetail(id).toData()
     }
 
-    override suspend fun getPopularMovie(): List<MovieThumbnailData> {
-        return movieDbService.getPopularMovie().results.map { it.toData() }
+    override suspend fun getPopularMovie(page: Int): List<MovieThumbnailData> {
+        return movieDbService.getPopularMovie(page).results.map { it.toData() }
     }
 }

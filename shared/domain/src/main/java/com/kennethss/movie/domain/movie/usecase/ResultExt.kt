@@ -2,6 +2,7 @@ package com.kennethss.movie.domain.movie.usecase
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.filterIsInstance
+import kotlinx.coroutines.flow.filterNot
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.onEach
 
@@ -31,9 +32,9 @@ fun <T> Flow<Result<T>>.onSuccess(action: suspend (T) -> Unit) = onEach {
     }
 }
 
-fun <T> Flow<Result<T>>.onError(action: suspend (Exception) -> Unit) = onEach {
+fun <T> Flow<Result<T>>.onError(action: suspend (Throwable) -> Unit) = onEach {
     if (it is Result.Error) {
-        action.invoke(it.exception)
+        action.invoke(it.throwable)
     }
 }
 
@@ -43,8 +44,10 @@ fun <T> Flow<Result<T>>.onErrorResult(action: suspend (Result.Error) -> Unit) = 
     }
 }
 
+fun <T> Flow<Result<T>>.filterNotLoading() = filterNot { it is Result.Loading }
+
 fun <T> Flow<Result<T>>.filterSuccessDataOrThrowIfError() = throwIfError().filterSuccessData()
 
-fun <T> Flow<Result<T>>.throwIfError() = onEach { if (it is Result.Error) throw it.exception }
+fun <T> Flow<Result<T>>.throwIfError() = onEach { if (it is Result.Error) throw it.throwable }
 
 fun <T> Flow<Result<T>>.filterSuccessData() = filterIsInstance<Result.Success<T>>().map { it.data }

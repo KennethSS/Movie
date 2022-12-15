@@ -5,7 +5,7 @@ import com.kennethss.movie.core.mvi.UiEvent
 import com.kennethss.movie.core.mvi.UiState
 import com.kennethss.movie.domain.movie.movie.MovieThumbnail
 
-interface MovieHomeContentContract {
+internal interface MovieHomeContentContract {
     sealed interface Event : UiEvent
 
     sealed interface State : UiState {

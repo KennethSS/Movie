@@ -18,9 +18,9 @@ class MovieRepositoryImpl @Inject constructor(
         emit(Result.Success(result))
     }
 
-    override fun getPopularMovies(): Flow<Result<List<MovieThumbnail>>> = flow {
+    override fun getPopularMovies(page: Int): Flow<Result<List<MovieThumbnail>>> = flow {
         emit(Result.Loading)
-        val result = movieDbRemoteDataSource.getPopularMovie().map { it.toDomain() }
+        val result = movieDbRemoteDataSource.getPopularMovie(page).map { it.toDomain() }
         emit(Result.Success(result))
     }
 }

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kennethss.movie.core.mvi.MviReducer
 import com.kennethss.movie.domain.movie.movie.FetchPopularMovieUseCase
+import com.kennethss.movie.domain.movie.movie.FetchPopularMovieUseCaseParam
 import com.kennethss.movie.domain.movie.usecase.onError
 import com.kennethss.movie.domain.movie.usecase.onSuccess
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -11,7 +12,7 @@ import kotlinx.coroutines.flow.launchIn
 import javax.inject.Inject
 
 @HiltViewModel
-class MovieHomeContentViewModel @Inject constructor(
+internal class MovieHomeContentViewModel @Inject constructor(
     fetchPopularMovieUseCase: FetchPopularMovieUseCase
 ) : ViewModel() {
 
@@ -27,7 +28,7 @@ class MovieHomeContentViewModel @Inject constructor(
     val effectFlow = reducer.effectFlow
 
     init {
-        fetchPopularMovieUseCase()
+        fetchPopularMovieUseCase(FetchPopularMovieUseCaseParam(1))
             .onSuccess { reducer.setState { MovieHomeContentContract.State.Success(it) } }
             .onError { }
             .launchIn(viewModelScope)

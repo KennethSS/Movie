@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -43,7 +44,7 @@ import com.kennethss.movie.domain.movie.movie.MovieThumbnail
 
 @OptIn(ExperimentalPagerApi::class, ExperimentalLifecycleComposeApi::class)
 @Composable
-fun MovieHomeContentScreen(
+internal fun MovieHomeContentScreen(
     onClickMovieThumbnail: (Int) -> Unit,
     viewModel: MovieHomeContentViewModel = hiltViewModel()
 ) {
@@ -53,7 +54,8 @@ fun MovieHomeContentScreen(
     val uiState by viewModel.stateFlow.collectAsStateWithLifecycle()
 
     LazyColumn(
-        state = scrollState
+        state = scrollState,
+        modifier = Modifier.fillMaxSize()
     ) {
         item {
             Box {

@@ -14,5 +14,7 @@ interface MovieDbService {
     ): MovieDetailResponse
 
     @GET("3/movie/popular")
-    suspend fun getPopularMovie(): MoviePopularResponse
+    suspend fun getPopularMovie(
+        @Query("page") page: Int
+    ): MoviePopularResponse
 }

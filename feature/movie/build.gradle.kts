@@ -57,6 +57,8 @@ dependencies {
     implementation("com.google.accompanist:accompanist-pager-indicators:0.27.0")
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.paging.runtime)
+    implementation(libs.androidx.paging.compose)
     implementation(libs.coil.kt.compose)
     implementation(libs.androidx.lifecycle.runtimeCompose)
     implementation(libs.hilt.android)
