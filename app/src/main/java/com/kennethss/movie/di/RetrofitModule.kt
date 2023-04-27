@@ -38,7 +38,7 @@ object RetrofitModule {
     @OptIn(ExperimentalSerializationApi::class)
     @Provides
     @Singleton
-    fun provideChoShopService(client: OkHttpClient): MovieDbService {
+    fun provideMovieService(client: OkHttpClient): MovieDbService {
         val contentType = "application/json".toMediaType()
         val factory = Json {
             isLenient = true
