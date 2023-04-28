@@ -4,10 +4,10 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kennethss.movie.core.mvi.MviReducer
+import com.kennethss.movie.core.usecase.onError
+import com.kennethss.movie.core.usecase.onSuccess
 import com.kennethss.movie.domain.movie.movie.FetchMovieDetailUseCase
 import com.kennethss.movie.domain.movie.movie.FetchMovieDetailUseCaseParam
-import com.kennethss.movie.domain.movie.usecase.onError
-import com.kennethss.movie.domain.movie.usecase.onSuccess
 import com.kennethss.movie.feature.movie.detail.navigation.KEY_MOVIE_ID
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn

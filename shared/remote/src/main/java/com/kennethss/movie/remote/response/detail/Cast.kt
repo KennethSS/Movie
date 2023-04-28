@@ -1,7 +1,7 @@
 package com.kennethss.movie.remote.response.detail
 
 
-import com.kennethss.movie.data.actor.ActorData
+import com.kennethss.movie.data.movie.MovieData
 import com.kennethss.movie.remote.response.popular.IMAGE_BASE_HOST
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -34,7 +34,7 @@ data class Cast(
     val profilePath: String = ""
 )
 
-fun Cast.toActorData() = ActorData(
+fun Cast.toActorData() = MovieData.ActorData(
     id = id,
     name = name,
     profileUrl = IMAGE_BASE_HOST + profilePath,

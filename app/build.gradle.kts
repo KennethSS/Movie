@@ -56,8 +56,11 @@ android {
 
 dependencies {
     implementation(project(":feature:main"))
-    implementation(project(":shared:data"))
-    implementation(project(":shared:domain"))
+    implementation(project(":shared:data:actor"))
+    implementation(project(":shared:data:movie"))
+    implementation(project(":shared:domain:core"))
+    implementation(project(":shared:domain:actor"))
+    implementation(project(":shared:domain:movie"))
     implementation(project(":shared:remote"))
     implementation(project(":feature:main"))
     implementation(project(":feature:movie"))

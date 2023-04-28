@@ -1,7 +1,7 @@
 package com.kennethss.movie.remote.response.detail
 
 
-import com.kennethss.movie.data.MovieData
+import com.kennethss.movie.data.movie.MovieData
 import com.kennethss.movie.remote.response.popular.IMAGE_BASE_HOST
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

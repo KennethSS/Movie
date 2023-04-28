@@ -1,6 +1,6 @@
 package com.kennethss.movie.remote.response.popular
 
-import com.kennethss.movie.data.MovieThumbnailData
+import com.kennethss.movie.data.movie.MovieThumbnailData
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

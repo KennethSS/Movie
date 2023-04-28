@@ -3,10 +3,10 @@ package com.kennethss.movie.feature.movie.ui.home
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kennethss.movie.core.mvi.MviReducer
+import com.kennethss.movie.core.usecase.onError
+import com.kennethss.movie.core.usecase.onSuccess
 import com.kennethss.movie.domain.movie.movie.FetchPopularMovieUseCase
 import com.kennethss.movie.domain.movie.movie.FetchPopularMovieUseCaseParam
-import com.kennethss.movie.domain.movie.usecase.onError
-import com.kennethss.movie.domain.movie.usecase.onSuccess
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.launchIn
 import javax.inject.Inject

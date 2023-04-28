@@ -26,7 +26,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":shared:data"))
+    implementation(project(":shared:data:actor"))
+    implementation(project(":shared:data:movie"))
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.serialization.json)
 

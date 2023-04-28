@@ -1,7 +1,7 @@
 package com.kennethss.movie.remote.response.detail
 
 
-import com.kennethss.movie.data.director.DirectorData
+import com.kennethss.movie.data.movie.DirectorData
 import com.kennethss.movie.remote.response.popular.IMAGE_BASE_HOST
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -32,7 +32,7 @@ data class Crew(
     val profilePath: String = ""
 )
 
-fun Crew.toDirectorData() = DirectorData(
+fun Crew.toDirectorData() = com.kennethss.movie.data.movie.DirectorData(
     id = id,
     name = name,
     profileUrl = IMAGE_BASE_HOST + profilePath

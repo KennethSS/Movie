@@ -1,7 +1,7 @@
 package com.kennethss.movie.remote.response.detail
 
 
-import com.kennethss.movie.data.preview.PreviewData
+import com.kennethss.movie.data.movie.preview.PreviewData
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -29,7 +29,7 @@ data class Result(
     val type: String = ""
 )
 
-fun Result.toPreviewData() = PreviewData(
+fun Result.toPreviewData() = com.kennethss.movie.data.movie.preview.PreviewData(
     key = key,
     name = name,
     site = site,

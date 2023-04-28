@@ -46,8 +46,9 @@ android {
 }
 
 dependencies {
+    implementation(project(":shared:domain:core"))
+    implementation(project(":shared:domain:movie"))
     implementation(project(":core:mvi"))
-    implementation(project(":shared:domain"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation("androidx.compose.ui:ui:1.3.2")

@@ -1,8 +1,8 @@
 package com.kennethss.movie.di
 
-import com.kennethss.movie.data.MovieRepositoryImpl
+import com.kennethss.movie.data.movie.MovieRepositoryImpl
 import com.kennethss.movie.data.actor.ActorRepositoryImpl
-import com.kennethss.movie.domain.movie.actor.ActorRepository
+import com.kennethss.movie.domain.actor.ActorRepository
 import com.kennethss.movie.domain.movie.movie.MovieRepository
 import dagger.Binds
 import dagger.Module
@@ -15,7 +15,7 @@ interface DataModule {
 
     @Binds
     fun bindsMovieRepository(
-        repository: MovieRepositoryImpl
+        repository: com.kennethss.movie.data.movie.MovieRepositoryImpl
     ): MovieRepository
 
     @Binds

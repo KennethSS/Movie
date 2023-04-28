@@ -1,9 +1,9 @@
 package com.kennethss.movie.di
 
-import com.kennethss.movie.domain.movie.di.DefaultDispatcher
-import com.kennethss.movie.domain.movie.di.IoDispatcher
-import com.kennethss.movie.domain.movie.di.MainDispatcher
-import com.kennethss.movie.domain.movie.di.MainImmediateDispatcher
+import com.kennethss.movie.core.di.DefaultDispatcher
+import com.kennethss.movie.core.di.IoDispatcher
+import com.kennethss.movie.core.di.MainDispatcher
+import com.kennethss.movie.core.di.MainImmediateDispatcher
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -2,11 +2,11 @@ package com.kennethss.movie.feature.movie.ui.top
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.kennethss.movie.domain.movie.movie.MovieThumbnail
+import com.kennethss.movie.core.usecase.filterNotLoading
 import com.kennethss.movie.domain.movie.movie.FetchPopularMovieUseCase
 import com.kennethss.movie.domain.movie.movie.FetchPopularMovieUseCaseParam
-import com.kennethss.movie.domain.movie.movie.MovieThumbnail
-import com.kennethss.movie.domain.movie.usecase.Result
-import com.kennethss.movie.domain.movie.usecase.filterNotLoading
+import com.kennethss.movie.core.usecase.Result
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
